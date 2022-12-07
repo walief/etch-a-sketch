@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Document</title>
+
+    <script>
+        function createGrid(size) {
+            var e = document.body;
+            for (var i = 0; i < size; i++) {
+                var row = document.createElement("div");
+                row.className = "row";
+                for (var j = 0; j <= size; j++) {
+                    var cell = document.createElement("div");
+                    cell.className = "cell";
+                    row.appendChild(cell);
+                }
+                e.appendChild(row);
+            }
+            document.getElementById("grid").innerText = e.innerHTML;
+        }
+    </script>
+    
+</head>
+
+<body>
+
+    <input type="button" onclick="createGrid(6)" value="gridify!"> 
+    <div class="grid" id="grid"></div>
+    
+</body>
+
+</html>
