@@ -1,38 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <meta charset='UTF-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel='stylesheet' href='style.css'>
 
     <title>Document</title>
 
     <script>
-        function createGrid(size) {
-            var e = document.body;
+        function generateGrid(size) {
+            var e = document.getElementById('grid');
             for (var i = 0; i < size; i++) {
-                var row = document.createElement("div");
-                row.className = "row";
-                for (var j = 0; j <= size; j++) {
-                    var cell = document.createElement("div");
-                    cell.className = "cell";
-                    row.appendChild(cell);
+                var column = document.createElement('div');
+                column.className = 'column';
+                for (var j = 0; j < size; j++) {
+                    var cell = document.createElement('div');
+                    cell.className = 'cell';
+                    column.appendChild(cell);
                 }
-                e.appendChild(row);
+                e.appendChild(column);
             }
-            document.getElementById("grid").innerText = e.innerHTML;
+
+            const cells = document.querySelectorAll('.cell');
+            cells.forEach(cell => {
+                cell.addEventListener('mouseover', function handleMouseOver(event) {
+                    cell.setAttribute('style', 'opacity: 50%');
+                });
+            });
+
+        }
+
+        function setGridSize(size) {
+
+        }
+
+        function clearGrid() {
+            const cells = document.querySelectorAll('.cell');
+            cells.forEach(cell => {
+                cell.setAttribute('style', 'opacity: 100%');
+            }
+            );
+        };
+        
+        function deleteGrid() {
+            var e = document.getElementById('grid');
+            while (e.firstChild) {
+                e.removeChild(e.firstChild);
+            }
         }
     </script>
-    
+
 </head>
 
 <body>
 
-    <input type="button" onclick="createGrid(6)" value="gridify!"> 
-    <div class="grid" id="grid"></div>
-    
+    <button id="clear">Clear</button>
+    <button id="reset">Reset</button>
+    <button id="newGrid">New Grid</button>
+
+    <div class='grid' id='grid'></div>
+
+    <script>
+        let gridSize = 16;
+        generateGrid(gridSize);
+
+        var resetBtn = document.getElementById('reset');
+        resetBtn.addEventListener('click', (event) => {
+            deleteGrid();
+            generateGrid(gridSize);
+        });
+
+        var clearBtn = document.getElementById('clear');
+        clearBtn.addEventListener('click', (event) => {
+            clearGrid();
+        });
+
+        var newGridBtn = document.getElementById('newGrid');
+        newGridBtn.addEventListener('click', (event) => {
+            var gridSize = prompt('Enter a new grid size');
+            if (gridSize >= 16 && gridSize <= 100) {
+                deleteGrid();
+                generateGrid(gridSize);
+            }
+            else {
+                alert('Don\'t mess with me!');
+                return
+            }
+        });
+    </script>
+
 </body>
 
 </html>
