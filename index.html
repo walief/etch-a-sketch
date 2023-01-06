@@ -7,11 +7,11 @@
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <link rel='stylesheet' href='style.css'>
 
-    <title>Document</title>
+    <title>Scritch-n-Scratch</title>
 
     <script>
         function generateGrid(size) {
-            var e = document.getElementById('grid');
+            var grid = document.getElementById('grid');
             for (var i = 0; i < size; i++) {
                 var column = document.createElement('div');
                 column.className = 'column';
@@ -20,13 +20,15 @@
                     cell.className = 'cell';
                     column.appendChild(cell);
                 }
-                e.appendChild(column);
+                grid.appendChild(column);
+                clearGrid(); // fix for opacity weirdness
             }
 
             const cells = document.querySelectorAll('.cell');
             cells.forEach(cell => {
                 cell.addEventListener('mouseover', function handleMouseOver(event) {
-                    cell.setAttribute('style', 'opacity: 50%');
+                    /* cell.setAttribute('style', 'opacity: 50%'); */
+                    cell.style.opacity *= 0.6;
                 });
             });
 
@@ -58,7 +60,7 @@
 
     <button id="clear">Clear</button>
     <button id="reset">Reset</button>
-    <button id="newGrid">New Grid</button>
+    <button id="new-grid">New Grid</button>
 
     <div class='grid' id='grid'></div>
 
@@ -77,7 +79,7 @@
             clearGrid();
         });
 
-        var newGridBtn = document.getElementById('newGrid');
+        var newGridBtn = document.getElementById('new-grid');
         newGridBtn.addEventListener('click', (event) => {
             var gridSize = prompt('Enter a new grid size');
             if (gridSize >= 16 && gridSize <= 100) {
