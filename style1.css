@@ -1,4 +1,6 @@
-* {
+/* Base Styles */
+
+    {
     margin: 0;
     padding: 0;
 }
@@ -9,23 +11,24 @@
     --border-color: transparent;
 }
 
+/* Layout Styles */
 .container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 600px;
-    width: 600px;
-    padding: 32px;
+    height: 80vh;
+    width: 80vw;
 }
 
+/* Module Styles */
 .grid {
     display: flex;
     width: 80%;
     height: 80%;
-    /* background-color: var(--background-color); */
     background-image: linear-gradient(black, rgb(9, 32, 179), rgb(250, 144, 68));
     border: 4px solid var(--border-color);
+    border-radius: 10px;
 }
 
 .column {
@@ -41,43 +44,39 @@
     opacity: 100%;
 }
 
-/* game console styling */
-body {
-    background-color: #222222;
-}
-
-.grid {
-    border: 2px solid white;
-}
-
+/* State Styles */
 button {
     border: 2px solid white;
-}
-
-button {
-    color: white;
-}
-
-.grid {
-    border-radius: 10px;
-}
-
-button {
     border-radius: 10px;
     color: #222222;
 }
 
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 80vh;
-    width: 80vw;
+/* Theme Styles */
+body {
+    background-color: #222222;
+}
+
+.title {
+    color:white;
+    text-align:center;
+    font-size: 2em;
+    margin-bottom:10px;
+}
+
+
+/* Specificity Overrides */
+.grid {
+    border: 2px solid white;
 }
 
 .cell {
-    /* width: 20px;
-    height: 20px; */
     background-color: #333333;
     border: 1px solid #444444;
+}
+
+/* Add this to the existing CSS */
+.control-panel {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
 }

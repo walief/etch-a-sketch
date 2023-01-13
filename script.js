@@ -40,8 +40,6 @@ function deleteGrid() {
     }
 }
 
-let gridSize = 16;
-generateGrid(gridSize);
 
 var resetBtn = document.getElementById('reset');
 resetBtn.addEventListener('click', (event) => {
@@ -66,3 +64,6 @@ newGridBtn.addEventListener('click', (event) => {
         return
     }
 });
+
+let gridSize = 16;
+generateGrid(gridSize);
